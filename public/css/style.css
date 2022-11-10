@@ -1,0 +1,130 @@
+body{
+    overflow-x: hidden;
+}
+body, html{
+    position: relative;
+    height: 100%;
+}
+
+*{
+    font-family: 'Roboto';
+}
+nav, .bg-exi{
+    background-color: #353e48;
+}  
+.mudarCor, .text-cor{
+    color: #ffbb33;
+}
+.exibicao{
+    border-radius: 5px;
+}
+.alargar{
+    height: 8em;
+}
+.lik-topo{
+    text-decoration: none;
+    padding: 10px;
+    background-color: #ffbb33;
+    color: black;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    font-size: 20px;
+    transition: .5s;
+}
+.lik-topo:hover{
+    color: white;
+    background-color: blue;
+}
+
+
+.ul_left{
+    margin-left:auto ;
+}
+
+#corpo{
+    min-height: 100vh;
+    position: relative;
+     
+}
+
+  footer{
+    background-color: #353e48;
+    
+    
+  width: 100%;
+
+}
+.altura, .level{
+    height: 24em;
+}
+
+
+#rodape h4{
+   
+    text-transform: uppercase;
+    font-size: 16px;  
+}
+#rodape h4>a{
+    text-decoration: none;
+    color: white;
+}
+#rodape h4>a:hover{
+    color: #f2a340;
+}
+p{
+    color: #c9ced1;
+    margin: 0;
+    padding: 0;
+}
+div>a{
+    text-decoration: none;  
+}
+#img-cartaz{
+    box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+    border-radius: 5px;
+    width: 60%;
+}
+.rigth>a{
+    
+    background-color: black;
+    text-decoration: none; 
+    color: white; 
+    padding: 10px
+}
+.rigth>a:hover{
+    color: #f2a340; 
+    
+}
+.form{
+    display: inline-block;
+}
+.cardLug1{
+    display: inline-block;
+}
+.cardLug2{
+    display: inline-block;
+    background-color: #f2a340;
+}
+ button ion-icon{
+   color: rgba(0, 0, 0, 0.668);
+   margin: 0 auto;
+   font-size: 5em;
+   
+}
+
+button ion-icon:hover{
+    color: red;
+}
+.img-trailer{
+    top: 0px;
+    height: 30em;
+    width: 80em;
+}
+#exibi_trailer{
+    
+}
+.point{
+    cursor: pointer;
+}
+
