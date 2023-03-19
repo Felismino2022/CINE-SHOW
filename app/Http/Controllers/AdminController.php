@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Response;
-
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Cinema;
 use App\Models\Provincia;
@@ -19,8 +19,43 @@ use App\Models\Client;
 class AdminController extends Controller
 {
     public function index(){
-       
-        return view('Admin.welcome');
+
+        //todos os filmes que têm uma sessao e que foram reservado
+        $filmes = DB::table('filmes')
+        ->whereExists(function ($query){
+            //recupera o id do filme pela url 
+            $query->select(DB::raw('*'))
+            ->from('seccaos')
+            ->join('reservas', 'seccaos.id', '=', 'reservas.seccao_id')
+            ->whereColumn('filmes.id', '=', 'seccaos.filme_id') ;
+         })
+        ->get();
+
+       // dd($filmes);
+
+        //todas as quantidades de filme, agrupados por id
+        $qtd_filmes = Seccao::select([
+           DB::raw('seccaos.filme_id'), 
+           DB::raw('COUNT(*) as total') ])
+        ->join('reservas', 'seccaos.id', '=', 'reservas.seccao_id')
+        ->groupBy('seccaos.filme_id')
+        ->orderBy('seccaos.filme_id')
+        ->get();
+        
+
+        $film = [];
+        $qtd_filme = [];
+        foreach($qtd_filmes as $filme){
+            $qtd_filme[] = $filme['total'];
+        }
+        foreach($filmes as $key => $filme){
+            $film[$key] = $filme->titulo;
+        }
+        //$filmm = ;
+ 
+       // dd($film);
+
+        return view('Admin.welcome', compact('film', 'qtd_filme'));
     }
 
     public function getCinema(){
@@ -37,7 +72,7 @@ class AdminController extends Controller
         $cinema->nome = $request->nome_cinema;
         $cinema->cidade_id = $request->cid;
         $cinema->estado = 'activo';
-        $cinema->utilizador_id = '1';
+        $cinema->user_id = '1';
         $cinema->save();
 
         return redirect('/cinema');
@@ -50,7 +85,7 @@ class AdminController extends Controller
         $sala->capacidade = $request->capacidade;
         $sala->cinema_id = $request->cinema;
         $sala->estado = 'activo';
-        $sala->utilizador_id = '1';
+        $sala->user_id = '1';
         $sala->save();
         return redirect('/sala');
     }
@@ -60,7 +95,7 @@ class AdminController extends Controller
         $lugar->nome = $request->nome_lugar;
         $lugar->sala_id = $request->sala;
         $lugar->estado = 'activo';
-        $lugar->utilizador_id = '1';
+        $lugar->user_id = '1';
         $lugar->save();
 
         return redirect('/lugar');
@@ -118,7 +153,7 @@ class AdminController extends Controller
         $filme->actor = $request->actor;
         $filme->duracao = $request->duracao;
         $filme->estado = 'activo';
-        $filme->utilizador_id = '1';
+        $filme->user_id = '1';
         $filme->descricao = $request->descricao;
         $filme->data_lancamento = $request->data_lancamento;
 
@@ -170,7 +205,7 @@ class AdminController extends Controller
         $seccao->filme_id = $request->filme;
         $seccao->sala_id = $request->sala;
         $seccao->estado = 'activo';
-        $seccao->utilizador_id = '1';
+        $seccao->user_id = '1';
 
         $seccao->save();
 

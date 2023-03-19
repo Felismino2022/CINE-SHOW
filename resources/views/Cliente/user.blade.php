@@ -14,7 +14,7 @@
         <div class="card">
             <h5 class="card-header text-center text-dark">Preencha os seus dados</h5>
             <div class="card-body">
-                <form action="/sucess" method="post">
+                <form action="/sucess" method="POST">
                 @csrf
                     <div class="py-3">
                         <input type="text" name="nome" id="nome" placeholder="Digite os seu nome" class="form-control" value="{{old('nome')}}">
@@ -22,8 +22,6 @@
                           <span class="text-danger"><small>{{$message}}</small></span>
                           @enderror
                     </div>
-                    <input type="text" name="lugar1" id="lugar1" value="{{$lugares['0']}}"  hidden>
-                    <input type="text" name="lugar2" id="lugar2" value="{{$lugares['1']}}" hidden>
                     <input type="text" name="seccao_id" id="seccao_id" value="{{$id_sec}}" hidden>
                     <div>
                         <input type="number" name="numero" id="numero" placeholder="Digite o seu número de telemovel" class="form-control" value="{{old('numero')}}">

@@ -17,8 +17,10 @@ class CreateCinemasTable extends Migration
             $table->id();
             $table->string('nome',30);
             $table->string('estado',30);
-            $table->foreignId('utilizador_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('cidade_id')->constrained();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
         });
     }

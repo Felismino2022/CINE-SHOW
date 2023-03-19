@@ -1,11 +1,15 @@
 @extends('leyout.main')
-@section('titulo', 'Seleciona Seccao')
+@section('titulo', 'Selecionar Seccao')
 @section('content')
+
+<?php
+    $enc = new App\Classes\Encri;
+?>
 
 
 <div class="container ">
 
-	<div class="ratio  img-trailer" style="background-image: url(/img/uploadImagem/{{$filme->trailer}}) ;
+	<div class="ratio  img-trailer" style="background-image: url({{asset('/img/uploadImagem/' . $filme->trailer)}}) ;
     background-repeat: no-repeat;">
 	<!--<iframe src="/video/spiderMan4.mp4" title="YouTube video" allowfullscreen>
 	</iframe>-->	
@@ -25,7 +29,7 @@
 		<div class="ratio ratio-21x9">
 
 		<video width="320" height="240" controls="controls" >
-			<source src="/video/spiderMan4.mp4" type="video/mp4">
+			<source src="{{asset('/video/spiderMan4.mp4')}}" type="video/mp4">
 			<!--video-->
 			
 			</iframe>
@@ -46,15 +50,15 @@
 			<div class="row ">
 				<div class="col-sm-5">
 				
-				<img src="/img/uploadImagem/{{$filme->imagem}}" width="200" height="400" alt="..." class="img-fluid">
+				<img src="{{asset('/img/uploadImagem/' . $filme->imagem)}}" width="200" height="400" alt="..." class="img-fluid">
 				</div>
 				<div class="col-sm-7">
 					<div class="card-body">
 						<h5 class="card-title text-white">{{$filme->titulo}}</h5>
 						<p class="card-text text-white">{{$filme->descricao}}</p>
-						<input type="hidden" id="id_filme" name="id_filme" value="{{$filme->id}}">
 
-						<form action="/select_lugar/{{$filme->id}}" name="formCinema" id="formCinema" method="post"
+						
+						<form action="/selecionar_lugar" name="formCinema" id="formCinema" method="post"
 						data-funcoes-url="{{route('ajax-sessoes')}}">
 						@csrf
 							<div class="row mb-3">
@@ -65,6 +69,8 @@
 									@endforeach																
 								</select>
 							</div>
+
+							<input type="hidden" id="id_filme" name="id_filme" value="{{$filme->id}}">
 
 							<div class="row mb-3">
 								<select id="sel_sessao" name="sel_sessao" class="form-control" required="">

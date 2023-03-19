@@ -24,6 +24,12 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
+        DB::table('users')->insert([
+            'name' => "Felismino",
+            'email' => "muchombo2021@gmail.com",
+            'password' => bcrypt('muchombo2021'),
+        ]);
     }
 
     /**

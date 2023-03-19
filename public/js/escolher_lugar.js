@@ -68,16 +68,19 @@ function getUser(){
 	lugar_id = (lugar_id.split(" "));
 	lugar_id.shift()
 	//console.log(lugar_id);
-	lugares = "";
+	/*lugares = "";
 	for(let i=0; i<lugar_id.length; i++){
 		
 		lugares = lugares+lugar_id[i]+'&';
-	}
+	}*/
+
+	lugares = JSON.parse(JSON.stringify(lugar_id));
 	//console.log(lugares);
 	
 	//console.log(lugar_id);
-	window.location.href = 'http://127.0.0.1:8000/user/'+lugares+seccao_id;
+	window.location.href = 'http://127.0.0.1:8000/user/'+btoa(lugares)+'/'+btoa(seccao_id);
 
+	//location.href = 'http://127.0.0.1:8000/user/'+lugares+seccao_id;(Analisar esse)
 	//document.getElementById("lg").innerHTML += '<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Modal title</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"> ...</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button></div></div></div></div>';
 	}
 }

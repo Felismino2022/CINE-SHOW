@@ -2,11 +2,13 @@
 @section('titulo', 'Selecionar Lugar')
 @section('content')
 
+
+
 <div>
 <div class="container">
     <div class="row">
         <h3 class="text-white text-center pt-2">Escolha o seu Lugar</h3>
-        <div class="col-md-6 bg-secondary py-3 px-3 my-3 mx-3 rounded-2">
+        <div class="col-md-6 col-xs-6 col-sm-6 bg-secondary py-3 px-3 my-3 mx-3 rounded-2">
             <label class="text-white">Filme : {{$filme->titulo}}</label>
             <br>
             <label class="text-white">Data Lancamento: {{date('d/m/Y' ,strtotime($filme->data_lancamento))}}</label>
@@ -16,7 +18,7 @@
             <label class="text-white">Seccao: {{date('H:i', strtotime($sessao->data_inicio))}}</label>
         </div>
 
-    <div class="col-md-4 bg-secondary py-3 px-3 my-3 mx-3 rounded-2">
+    <div class="col-md-4 col-xs-4 col-sm-4 bg-secondary py-3 px-3 my-3 mx-3 rounded-2">
 
         <label class="text-white">Lugares Disponiveis : {{$qtd_lugares_disponivel}}</label>
 			<br>
@@ -26,8 +28,9 @@
 
         
             <select id="qtd_lugar" name="qtd_lugar" class="form-element">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                @for($i=1; $i <= $qtd_lugares_disponivel; $i++)  
+                    <option value="{{$i}}">{{$i}}</option>
+                @endfor
             </select>
           
 

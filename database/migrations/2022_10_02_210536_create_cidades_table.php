@@ -17,6 +17,8 @@ class CreateCidadesTable extends Migration
             $table->id();
             $table->string('nome',30);
             $table->foreignId('provincia_id')->constrained();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
         });
     }

@@ -18,8 +18,10 @@ class CreateSalasTable extends Migration
             $table->string('nome',20);
             $table->string('estado',20);
             $table->string('capacidade',20);
-            $table->foreignId('utilizador_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('cinema_id')->constrained();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
         });
     }

@@ -233,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'pdf' => Barryvdh\DomPDF\Facade::class,
+        
 
     ],
 

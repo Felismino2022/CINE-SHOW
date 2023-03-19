@@ -13,15 +13,10 @@
 <body>
 
 @php
-        $lug = '';
-        if(count($lugares) == 2 && $lugares['1'] != ''){
-            
-            $lug = $lugares['0'] . ',' . $lugares['1'];
-        
-    }else{
-        $lug = $lugares['0'];
-    }
-   @endphp
+         
+         $lug = implode(",", $lugares);
+       
+@endphp
     
     <div class="container">
         <h1 class="text-center">CINE<span class="text-warning">SHOW</span> </h1>

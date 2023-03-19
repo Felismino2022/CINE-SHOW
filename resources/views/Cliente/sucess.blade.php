@@ -2,21 +2,17 @@
 @section('titulo', 'confirmar')
 @section('content')
 
+    @php
+         
+    $lug = implode(",", $lugares);
+  
+    @endphp
 
-   @php
-        $lug = '';
-        if(count($lugares) == 2 && $lugares['1'] != ''){
-            
-            $lug = $lugares['0'] . ',' . $lugares['1'];
-        
-    }else{
-        $lug = $lugares['0'];
-    }
-   @endphp
+   
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12 bg-secondary py-3 px-3 my-3 mx-3 rounded-2">
+        <div class="col-md-12 col-sm-12 col-12 bg-secondary py-3 px-3 my-3 mx-3 ">
             <form action="/gerarpdf" method="post">
                 @csrf
             <h2 class="text-white text-center">Confirmar dados </h2>
@@ -30,8 +26,6 @@
             <br>
             <p class="text-white text-center">Sala: {{$sessao_unica->sala->nome}}</label>
             <p class="text-white text-center">Lugar: @php echo $lug @endphp</label>
-            <input type="text" name="lugar1" id="lugar1" value="{{$lugares['0']}}"  hidden>
-            <input type="text" name="lugar2" id="lugar2" value="{{$lugares['1']}}"  hidden>
             <h4 class="text-white text-center">Dados Pessoas</h4><br>
             <p class="text-white text-center">Nome: {{$nome}}</p><br>
             <input type="text" name="nome" id="nome" value="{{$nome}}"  hidden>

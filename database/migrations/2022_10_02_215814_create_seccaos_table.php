@@ -15,13 +15,15 @@ class CreateSeccaosTable extends Migration
     {
         Schema::create('seccaos', function (Blueprint $table) {
             $table->id();
-            $table->string('data_inicio',20);
-            $table->string('data_fim',20);
+            $table->timestamp('data_inicio');
+            $table->timestamp('data_fim')->nullable();
             $table->string('estado',20);
             $table->string('preco',20);
-            $table->foreignId('utilizador_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('filme_id')->constrained();
             $table->foreignId('sala_id')->constrained();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
