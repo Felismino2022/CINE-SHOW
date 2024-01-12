@@ -32,11 +32,16 @@
             </div>
 
             <div class="my-4">
+              <label for="video"><strong>Video:</strong></label>
+              <input type="text" name="video" id="video" class="form-control" placeholder="Digite o link do video">
+            </div>
+
+            <div >
               <label for="data_lancamento"><strong>Data de Lançamento</strong></label>
               <input type="date" name="data_lancamento" id="data_lancamento" class="form-control">
             </div>
 
-            <div>
+            <div class="my-4">
               <label for="duracao"><strong>Duração do Filme</strong></label>
               <input type="text" name="duracao" id="duracao" class="form-control" placeholder="Duração do Filme">
             </div>

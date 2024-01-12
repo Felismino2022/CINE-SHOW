@@ -24,7 +24,7 @@ class ValidarUser extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|regex:/^[a-zá-ùÁ-Ù][a-z0-9á-ùÁ-Ù]+$/i',
+            'nome' => 'required|regex:/^[a-zá-ùÁ-Ù][a-z0-9á-ùÁ-Ù\s]+$/i',
             'numero' => 'required|regex:/^[9][0-9]+$/|min:9'
         ];
     }

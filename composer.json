@@ -14,7 +14,9 @@
         "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "intervention/image": "^3.2",
+        "intervention/gif": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

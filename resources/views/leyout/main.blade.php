@@ -49,9 +49,9 @@
             </div>
         </div>
     </nav><!--fim da navbar-->
-
-    @yield('content')
-    
+    <section>
+        @yield('content')
+    </section>
     <a class='lik-topo' href="#">&uarr;</a>
     
     <footer  id="rodape" class=" px-0 py-4">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Response;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 
 use App\Models\Cinema;
 use App\Models\Provincia;
@@ -154,10 +156,15 @@ class AdminController extends Controller
         $filme->duracao = $request->duracao;
         $filme->estado = 'activo';
         $filme->user_id = '1';
+        $filme->video = $request->video;
         $filme->descricao = $request->descricao;
         $filme->data_lancamento = $request->data_lancamento;
 
         //image Upload
+
+        // ...
+        
+// ...
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
 
             $requestImagem = $request->imagem;
@@ -184,7 +191,6 @@ class AdminController extends Controller
 
             $filme->trailer = $imageName;
         }
-
         $filme->save();
 
         return redirect('/filme');

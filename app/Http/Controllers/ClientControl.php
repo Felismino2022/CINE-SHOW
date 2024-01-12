@@ -7,6 +7,8 @@ use App\Http\Controllers\Response;
 
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Session;
+
 
 
 use Illuminate\Http\Request;
@@ -53,10 +55,31 @@ class ClientControl extends Controller
         $sala = Sala::findOrfail($sessao_unica->sala_id);
         $nome = $request->nome;
         $numero = $request->numero;
-        $lugares = $request->session()->get('lugares');    
+        $lugares = $request->session()->get('lugares'); 
+        
+        session(['nome' => $nome]);
+        session(['sessao_unica' => $sessao_unica]);
+        session(['lugares' => $lugares]);
+        session(['numero' => $numero]);
+        session(['sala' => $sala]);
+
 
         return view('Cliente.sucess', ['sessao_unica' =>$sessao_unica, 'lugares' => $lugares, 'nome' =>$nome, 'numero' => $numero, 'sala' => $sala]);
     }
+
+    public function get_sucess(){
+
+        $nome = session('nome');
+        $sessao_unica = session('sessao_unica');
+        $lugares = session('lugares');
+        $numero = session('numero');
+        $sala = session('sala');
+
+
+        return view('Cliente.sucess', ['sessao_unica' =>$sessao_unica, 'lugares' => $lugares, 'nome' =>$nome, 'numero' => $numero, 'sala' => $sala]);
+    }
+
+
 
     public function gerarPdf(Request $request){
 
@@ -197,8 +220,28 @@ class ClientControl extends Controller
         }else{
             $qtd_lugares_disponivel = $qtd_lugares_sala - $qtd_lugares_ocupados; 
         }
+
+        session(['filme' => $filme]);
+        session(['sessao' => $sessao]);
+        session(['qtd_lugares_disponivel' => $qtd_lugares_disponivel]);
+        session(['qtd_lugares_sala' => $qtd_lugares_sala]);
+        session(['array_lugares_ocupados' => $array_lugares_ocupados]);
+        session(['total_lugares_salas' => $total_lugares_salas]);
              
                         
+        return view('Cliente.selec_lugar', ['filme' => $filme, 'sessao' => $sessao, 'qtd_lugares_disponivel' => $qtd_lugares_disponivel, 'qtd_lugares_sala' => $qtd_lugares_sala, 'array_lugares_ocupados' => $array_lugares_ocupados, 'total_lugares_salas' => $total_lugares_salas]);
+    }
+
+    public function get_session_select_lugar(){
+
+
+        $filme = session('filme');
+        $sessao = session('sessao');
+        $qtd_lugares_disponivel = session('qtd_lugares_disponivel');
+        $qtd_lugares_sala = session('qtd_lugares_sala');
+        $array_lugares_ocupados = session('array_lugares_ocupados');
+        $total_lugares_salas = session('total_lugares_salas');
+
         return view('Cliente.selec_lugar', ['filme' => $filme, 'sessao' => $sessao, 'qtd_lugares_disponivel' => $qtd_lugares_disponivel, 'qtd_lugares_sala' => $qtd_lugares_sala, 'array_lugares_ocupados' => $array_lugares_ocupados, 'total_lugares_salas' => $total_lugares_salas]);
     }
 

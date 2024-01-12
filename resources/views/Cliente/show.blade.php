@@ -28,11 +28,14 @@
       <div class="modal-body ">
 		<div class="ratio ratio-21x9">
 
-		<video width="320" height="240" controls="controls" >
-			<source src="{{asset('/video/spiderMan4.mp4')}}" type="video/mp4">
-			<!--video-->
-			
-			</iframe>
+		<iframe
+                    id="youtube-video"
+                    width="560"
+                    height="315"
+                    src="{{$filme->video}}"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
 			</div>
       </div>
       
